@@ -32,6 +32,7 @@ namespace Utils {
     class Dummy {};
   }
   
+  // FIXME: This test is not portable, and may fail on some compilers. It is only meant to be a sanity check for the typeName function.
   // Note: The exact format depends on the compiler
   // static_assert(typeName<detail::Dummy>() == "Utils::detail::Dummy");
   
