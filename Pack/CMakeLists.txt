@@ -1,53 +1,46 @@
-cmake_minimum_required(VERSION 3.8)
-project(pack)
+cmake_minimum_required(VERSION 4.2)
 
-set(CMAKE_BUILD_TYPE "Release")
+project(Pack LANGUAGES C CXX)
 
-add_executable(pack
-        "search dir.cpp"
-        "search dir.hpp"
-        "sort by frame.cpp"
-        "sort by frame.hpp"
-        "load images.cpp"
-        "load images.hpp"
-        "stb_rect_pack.c"
-        "stb_rect_pack.h"
-        "rects from images.cpp"
-        "rects from images.hpp"
-        "pack rects.cpp"
-        "pack rects.hpp"
-        "blit images.cpp"
-        "blit images.hpp"
-        "write atlas.cpp"
-        "write atlas.hpp"
-        "write image.cpp"
-        "write image.hpp"
-        "app.cpp"
-        "app.hpp"
-        "main.cpp"
+set(target pack)
+add_executable(${target})
+target_sources(${target} PRIVATE
+    main.cpp
+    
+    app.cpp
+    "blit images.cpp"
+    "load images.cpp"
+    "pack rects.cpp"
+    "rects from images.cpp"
+    "search dir.cpp"
+    "sort by frame.cpp"
+    "write atlas.cpp"
+    "write image.cpp"
+
+    "stb_rect_pack.c"
 )
+target_compile_features(${target} PRIVATE cxx_std_26)
+target_link_libraries(${target} PRIVATE Simpleton-Engine)
 
-target_compile_features(pack
-        PRIVATE
-        cxx_std_17
-)
 
-install(TARGETS pack
-        RUNTIME DESTINATION bin
-)
+find_package(PNG REQUIRED)
+target_link_libraries(${target} PRIVATE PNG::PNG)
 
-target_include_directories(pack
-        PRIVATE
-        /usr/local/include
-        ${CMAKE_CURRENT_SOURCE_DIR}
-        ${CMAKE_CURRENT_SOURCE_DIR}/..
-)
-
-target_link_libraries(pack
-        PRIVATE
-        /usr/local/lib/libpng16.a
-        /usr/local/opt/zlib/lib/libz.a
-)
-
-add_definitions(-DRELEASE)
-
+# find_package(EnTT CONFIG REQUIRED)
+# target_link_libraries(${target} PRIVATE EnTT::EnTT)
+# find_package(SDL2 CONFIG REQUIRED)
+# target_link_libraries(${target} PRIVATE SDL2::SDL2)
+# find_package(SDL2_image CONFIG REQUIRED)
+# target_link_libraries(${target} PRIVATE SDL2_image::SDL2_image)
+# find_package(SDL2_mixer CONFIG REQUIRED)
+# target_link_libraries(${target} PRIVATE SDL2_mixer::SDL2_mixer)
+# find_package(SDL2_ttf CONFIG REQUIRED)
+# target_link_libraries(${target} PRIVATE SDL2_ttf::SDL2_ttf)
+# find_package(glm CONFIG REQUIRED)
+# target_link_libraries(${target} PRIVATE glm::glm)
+# find_package(nlohmann_json CONFIG REQUIRED)
+# target_link_libraries(${target} PRIVATE nlohmann_json::nlohmann_json)
+# find_package(OpenGL REQUIRED)
+# target_link_libraries(${target} PRIVATE OpenGL::GL)
+# find_package(GLEW REQUIRED)
+# target_link_libraries(${target} PRIVATE GLEW::GLEW)
