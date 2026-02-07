@@ -11,6 +11,7 @@
 
 #include <string>
 #include <optional>
+#include <stdexcept>
 #include "foreach.hpp"
 #include "../Utils/type name.hpp"
 

@@ -50,25 +50,25 @@ namespace Math {
   }
   
   namespace Literals {
-    constexpr uint64_t operator""_b(uint64_t value) {
-      return value * Math::Byte::ONE;
+    constexpr uint64_t operator""_b(unsigned long long value) {
+      return (uint64_t)value * Math::Byte::ONE;
     }
-    constexpr uint64_t operator""_kb(uint64_t value) {
+    constexpr uint64_t operator""_kb(unsigned long long value) {
       return value * Math::Byte::KILO;
     }
-    constexpr uint64_t operator""_mb(uint64_t value) {
+    constexpr uint64_t operator""_mb(unsigned long long value) {
       return value * Math::Byte::MEGA;
     }
-    constexpr uint64_t operator""_gb(uint64_t value) {
+    constexpr uint64_t operator""_gb(unsigned long long value) {
       return value * Math::Byte::GIGA;
     }
-    constexpr uint64_t operator""_tb(uint64_t value) {
+    constexpr uint64_t operator""_tb(unsigned long long value) {
       return value * Math::Byte::TERA;
     }
-    constexpr uint64_t operator""_pb(uint64_t value) {
+    constexpr uint64_t operator""_pb(unsigned long long value) {
       return value * Math::Byte::PETA;
     }
-    constexpr uint64_t operator""_eb(uint64_t value) {
+    constexpr uint64_t operator""_eb(unsigned long long value) {
       return value * Math::Byte::EXA;
     }
 

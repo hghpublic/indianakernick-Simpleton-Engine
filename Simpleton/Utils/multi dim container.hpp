@@ -147,7 +147,7 @@ namespace Utils {
   class MultiDimContainer {
   public:
     using Container = std::vector<ElementType>;
-    using MultiDimArray = MultiDimArray<DIMS, ORDER, CoordType, IndexType>;
+    using MultiDimArray = ::Utils::MultiDimArray<DIMS, ORDER, CoordType, IndexType>;
 
     using Coords = typename MultiDimArray::Coords;
     using AccessIndex = typename MultiDimArray::AccessIndex;

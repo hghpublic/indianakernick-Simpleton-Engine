@@ -26,7 +26,7 @@ namespace ECS::detail {
       const bool gotComp = List::getByName<CompList>(
         pair.first,
         [id, &idMap, &registry, &compInits, &props = pair.second] (auto t) {
-          compInits.init(registry.assign<LIST_TYPE(t)>(id), props, idMap, id);
+          compInits.init(registry.emplace<LIST_TYPE(t)>(id), props, idMap, id);
         }
       );
       if (!gotComp) {
@@ -90,7 +90,7 @@ bool ECS::LevelManager<CompList>::loadLevel(const ECS::Level level) {
   assert(registry);
   assert(getLevelPath);
   if (current != NULL_LEVEL) {
-    registry->reset();
+    registry->clear();
   }
   if (detail::loadLevel(getLevelPath(level), *compInits, *registry)) {
     current = level;
