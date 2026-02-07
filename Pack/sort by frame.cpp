@@ -8,7 +8,10 @@
 
 #include "sort by frame.hpp"
 
+#include <limits>
 #include <cerrno>
+#include <algorithm>
+#include <stdexcept>
 #include <Simpleton/Utils/profiler.hpp>
 
 namespace {

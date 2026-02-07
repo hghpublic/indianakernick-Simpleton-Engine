@@ -11,6 +11,7 @@
 
 #include <vector>
 #include <string>
+#include <stdexcept>
 #include <string_view>
 
 class DirSearchError final : public std::runtime_error {

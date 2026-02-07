@@ -8,6 +8,7 @@
 
 #include "search dir.hpp"
 
+#include <memory>
 #include <dirent.h>
 #include <iostream>
 #include <Simpleton/Utils/profiler.hpp>
