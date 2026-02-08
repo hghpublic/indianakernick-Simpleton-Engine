@@ -122,7 +122,10 @@ inline void GL::Context::initImpl(const bool vsync) {
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
   
   context = CHECK_SDL_NULL(SDL_GL_CreateContext(window));
+// FIXME: causes runtime error in devcontainer
+#if defined(SIMPLETON_OPENGL_HAS_VSYNC)
   CHECK_SDL_ERROR(SDL_GL_SetSwapInterval(vsync));
+#endif
   
   glewExperimental = GL_TRUE;
   const GLenum glewError = glewInit();
